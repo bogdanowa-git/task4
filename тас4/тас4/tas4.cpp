@@ -8,18 +8,15 @@
 
 using namespace std;
 
- double sum1(double x, int n, double& l)
+  double sum1(double x, int n, double& l)
 {
 		 double sum = 1;
-	         double r;
 
 		 l = -pow(x, 2);
 		 for (unsigned long i = 1; i < n-1; i++)
 		 {
-			 r = -(pow(x, 2) / (i + 1));
 			 sum += l;
-			 l *= r ; //n-й элемент последовательности 
-			 
+			 l = l * -(pow(x, 2) / (i + 1)); //n-й элемент последовательности 
 		 }
 
 		 return sum;
@@ -30,18 +27,15 @@ double sum2(double x, double E, int& n)
 {
 	double last =1; //инициализация последнего элемента суммы
 	double sum = last;
-	double r;
 	n = 0;
 	
 	if (E >= 1) return 0;
 
 	for (n = 1; abs(last)>E; n++) // пока последний элемент суммы больше некоторого числа работает цикл, n - счетчик слагаемых
 	{
+		last = last * -(pow(x, 2) / (n)); //n-й элемент последовательности 
 		sum += last;
-		r = -(pow(x, 2) / (n));
-		last *= r; //n-й элемент последовательности 
-		
-		
+
 	}
 	
 	return sum;
